@@ -1,19 +1,19 @@
 import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
-import { AuthModule } from './auth/auth.module'
-import { TaskModule } from './task/task.module'
-import { TimeBlockModule } from './time-block/time-block.module'
-import { TimerModule } from './timer/timer.module'
-import { UserModule } from './user/user.module'
+import { AuthModule } from './auth/auth.module.js'
+import { UserModule } from './user/user.module.js'
+import { ContractsModule } from './contracts/contracts.module';
+import { ServicesModule } from './services/services.module';
+import { ProductsModule } from './products/products.module';
 
 @Module({
 	imports: [
 		ConfigModule.forRoot(),
 		AuthModule,
 		UserModule,
-		TaskModule,
-		TimeBlockModule,
-		TimerModule
+		ContractsModule,
+		ServicesModule,
+		ProductsModule,
 	]
 })
 export class AppModule {}

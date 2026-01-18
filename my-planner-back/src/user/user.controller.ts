@@ -9,8 +9,8 @@ import {
 } from '@nestjs/common'
 import { Auth } from 'src/auth/decorators/auth.decorator'
 import { CurrentUser } from 'src/auth/decorators/user.decorator'
-import { UserDto } from './dto/user.dto'
-import { UserService } from './user.service'
+import { UserDto } from './dto/user.dto.js'
+import { UserService } from './user.service.js'
 
 @Controller('user/profile')
 export class UserController {

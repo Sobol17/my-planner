@@ -10,8 +10,8 @@ import {
 	ValidationPipe
 } from '@nestjs/common'
 import { Request, Response } from 'express'
-import { AuthService } from './auth.service'
-import { AuthDto } from './dto/auth.dto'
+import { AuthService } from './auth.service.js'
+import { AuthDto } from './dto/auth.dto.js'
 
 @Controller('auth')
 export class AuthController {

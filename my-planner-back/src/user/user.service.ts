@@ -1,9 +1,8 @@
 import { BadGatewayException, Injectable } from '@nestjs/common'
 import { hash } from 'argon2'
-import { startOfDay, subDays } from 'date-fns'
 import { AuthDto } from 'src/auth/dto/auth.dto'
 import { PrismaService } from 'src/prisma.service'
-import { UserDto } from './dto/user.dto'
+import { UserDto } from './dto/user.dto.js'
 
 @Injectable()
 export class UserService {
@@ -12,7 +11,6 @@ export class UserService {
 	getById(id: string) {
 		return this.prisma.user.findUnique({
 			where: { id },
-			include: { tasks: true }
 		})
 	}
 
@@ -27,47 +25,11 @@ export class UserService {
 
 		if (!profile) throw new BadGatewayException('User profile not found')
 
-		const totalTasks = profile.tasks.length
-		// TODO: Перенести в task.service
-		const completedTasks = await this.prisma.task.count({
-			where: {
-				userId: id,
-				isCompleted: true
-			}
-		})
-
-		const todayStart = startOfDay(new Date())
-		const weekStart = startOfDay(subDays(new Date(), 7))
-
-		const todayTasks = await this.prisma.task.count({
-			where: {
-				userId: id,
-				createdAt: {
-					gte: todayStart.toISOString()
-				}
-			}
-		})
-
-		const weekTasks = await this.prisma.task.count({
-			where: {
-				userId: id,
-				createdAt: {
-					gte: weekStart.toISOString()
-				}
-			}
-		})
-
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		const { password, ...profileWithOutPassword } = profile
 
 		return {
 			user: profileWithOutPassword,
-			statistics: [
-				{ label: 'Total', value: totalTasks },
-				{ label: 'Completed tasks', value: completedTasks },
-				{ label: 'Today tasks', value: todayTasks },
-				{ label: 'Week tasks', value: weekTasks }
-			]
 		}
 	}
 
