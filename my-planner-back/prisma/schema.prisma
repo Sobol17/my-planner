@@ -52,6 +52,11 @@ model Contract {
   price          Int
   comment        String?
 
+  deadmanAddress  String
+  deadmanAge      Int
+  deadmanBirthday DateTime
+  deadmanDeathDay DateTime
+
   customerId String?
   customer   Customer? @relation(fields: [customerId], references: [id])
 

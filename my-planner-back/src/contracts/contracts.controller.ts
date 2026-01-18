@@ -27,7 +27,6 @@ export class ContractsController {
 	@Post()
 	@Auth()
 	async createContract(@Body() dto: CreateContractDto) {
-		// Возвращаем JSON: { id, url }
 		return this.contractsService.createContract(dto)
 	}
 
