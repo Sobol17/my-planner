@@ -1,5 +1,5 @@
 class DASHBOARD {
-	private root = '/i'
+	private root = '/lk'
 
 	DASHBOARD = this.root
 	CONTRACTS = `${this.root}/contracts`

@@ -14,7 +14,7 @@ export const MENU: IMenuItem[] = [
 	{
 		icon: LayoutDashboard,
 		link: DASHBOARD_PAGES.DASHBOARD,
-		name: 'Дашборд'
+		name: 'Аналитика'
 	},
 	{
 		icon: BookUser,

@@ -26,9 +26,15 @@ importers:
       '@tanstack/react-query-devtools':
         specifier: ^5.18.0
         version: 5.91.2(@tanstack/react-query@5.90.20(react@18.3.1))(react@18.3.1)
+      '@tanstack/react-table':
+        specifier: ^8.21.3
+        version: 8.21.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       axios:
         specifier: ^1.6.7
         version: 1.13.2
+      class-variance-authority:
+        specifier: ^0.7.1
+        version: 0.7.1
       clsx:
         specifier: ^2.1.0
         version: 2.1.1
@@ -47,6 +53,9 @@ importers:
       next:
         specifier: 14.1.0
         version: 14.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.97.3)
+      next-themes:
+        specifier: ^0.4.6
+        version: 0.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react:
         specifier: ^18
         version: 18.3.1
@@ -65,9 +74,18 @@ importers:
       sonner:
         specifier: ^1.4.0
         version: 1.7.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      tailwind-merge:
+        specifier: ^3.4.0
+        version: 3.4.0
       tailwind-variants:
         specifier: ^0.1.20
         version: 0.1.20(tailwindcss@3.4.19)
+      tailwindcss-animate:
+        specifier: ^1.0.7
+        version: 1.0.7(tailwindcss@3.4.19)
+      zod:
+        specifier: ^4.3.6
+        version: 4.3.6
     devDependencies:
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
@@ -382,6 +400,17 @@ packages:
     peerDependencies:
       react: ^18 || ^19
 
+  '@tanstack/react-table@8.21.3':
+    resolution: {integrity: sha512-5nNMTSETP4ykGegmVkhjcS8tTLW6Vl4axfEGQN3v0zdHYbK4UfoqfPChclTrJ4EoK9QynqAu9oUf8VEmrpZ5Ww==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      react: '>=16.8'
+      react-dom: '>=16.8'
+
+  '@tanstack/table-core@8.21.3':
+    resolution: {integrity: sha512-ldZXEhOBb8Is7xLs01fR3YEc3DERiz5silj8tnGkFZytt1abEvl/GhUmCE0PMLaMPTa3Jk4HbKmRlHmu+gCftg==}
+    engines: {node: '>=12'}
+
   '@trivago/prettier-plugin-sort-imports@4.3.0':
     resolution: {integrity: sha512-r3n0onD3BTOVUNPhR4lhVK4/pABGpbA7bW3eumZnYdKaHkf1qEC+Mag6DPbGNuuh0eG8AaYj+YqmVHSiGslaTQ==}
     peerDependencies:
@@ -484,6 +513,9 @@ packages:
   chokidar@4.0.3:
     resolution: {integrity: sha512-Qgzu8kfBvo+cA4962jnP1KkS6Dop5NS6g7R5LFYJr4b8Ub94PPQXUksCw9PvXoeXPRRddRNC5C1JQUR2SMGtnA==}
     engines: {node: '>= 14.16.0'}
+
+  class-variance-authority@0.7.1:
+    resolution: {integrity: sha512-Ka+9Trutv7G8M6WT6SeiRWz792K5qEqIGEGzXKhAE6xOWAY6pPH8U+9IY3oCMv6kqTmLsv7Xh/2w2RigkePMsg==}
 
   client-only@0.0.1:
     resolution: {integrity: sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==}
@@ -756,6 +788,12 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
+  next-themes@0.4.6:
+    resolution: {integrity: sha512-pZvgD5L0IEvX5/9GWyHMf3m8BKiVQwsCMHfoFosXtXBMnaS0ZnIJ9ST4b4NqLVKDEm8QBxoNNGNaBv2JNF6XNA==}
+    peerDependencies:
+      react: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
+      react-dom: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
+
   next@14.1.0:
     resolution: {integrity: sha512-wlzrsbfeSU48YQBjZhDzOwhWhGsy+uQycR8bHAOt1LY1bn3zZEcDyHQOEoN3aWzQ8LHCAJ1nqrWCc9XF2+O45Q==}
     engines: {node: '>=18.17.0'}
@@ -1002,11 +1040,19 @@ packages:
   tailwind-merge@1.14.0:
     resolution: {integrity: sha512-3mFKyCo/MBcgyOTlrY8T7odzZFx+w+qKSMAmdFzRvqBfLlSigU6TZnlFHK0lkMwj9Bj8OYU+9yW9lmGuS0QEnQ==}
 
+  tailwind-merge@3.4.0:
+    resolution: {integrity: sha512-uSaO4gnW+b3Y2aWoWfFpX62vn2sR3skfhbjsEnaBI81WD1wBLlHZe5sWf0AqjksNdYTbGBEd0UasQMT3SNV15g==}
+
   tailwind-variants@0.1.20:
     resolution: {integrity: sha512-AMh7x313t/V+eTySKB0Dal08RHY7ggYK0MSn/ad8wKWOrDUIzyiWNayRUm2PIJ4VRkvRnfNuyRuKbLV3EN+ewQ==}
     engines: {node: '>=16.x', pnpm: '>=7.x'}
     peerDependencies:
       tailwindcss: '*'
+
+  tailwindcss-animate@1.0.7:
+    resolution: {integrity: sha512-bl6mpH3T7I3UFxuvDEXLxy/VuFxBk5bbzplh7tXI68mwMokNYd1t9qPBHlnyTwfa4JGC4zP516I1hYYtQ/vspA==}
+    peerDependencies:
+      tailwindcss: '>=3.0.0 || insiders'
 
   tailwindcss@3.4.19:
     resolution: {integrity: sha512-3ofp+LL8E+pK/JuPLPggVAIaEuhvIz4qNcf3nA1Xn2o/7fb7s/TYpHhwGDv1ZU3PkBluUVaF8PyCHcm48cKLWQ==}
@@ -1067,6 +1113,9 @@ packages:
 
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
+
+  zod@4.3.6:
+    resolution: {integrity: sha512-rftlrkhHZOcjDwkGlnUtZZkvaPHCsDATp4pGpuOOMDaTdDDXF91wuVDJoWoPsKX/3YPQ5fHuF3STjcYyKr+Qhg==}
 
 snapshots:
 
@@ -1326,6 +1375,14 @@ snapshots:
       '@tanstack/query-core': 5.90.20
       react: 18.3.1
 
+  '@tanstack/react-table@8.21.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@tanstack/table-core': 8.21.3
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+
+  '@tanstack/table-core@8.21.3': {}
+
   '@trivago/prettier-plugin-sort-imports@4.3.0(prettier@3.8.1)':
     dependencies:
       '@babel/generator': 7.17.7
@@ -1440,6 +1497,10 @@ snapshots:
   chokidar@4.0.3:
     dependencies:
       readdirp: 4.1.2
+
+  class-variance-authority@0.7.1:
+    dependencies:
+      clsx: 2.1.1
 
   client-only@0.0.1: {}
 
@@ -1657,6 +1718,11 @@ snapshots:
 
   nanoid@3.3.11: {}
 
+  next-themes@0.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+
   next@14.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.97.3):
     dependencies:
       '@next/env': 14.1.0
@@ -1863,9 +1929,15 @@ snapshots:
 
   tailwind-merge@1.14.0: {}
 
+  tailwind-merge@3.4.0: {}
+
   tailwind-variants@0.1.20(tailwindcss@3.4.19):
     dependencies:
       tailwind-merge: 1.14.0
+      tailwindcss: 3.4.19
+
+  tailwindcss-animate@1.0.7(tailwindcss@3.4.19):
+    dependencies:
       tailwindcss: 3.4.19
 
   tailwindcss@3.4.19:
@@ -1940,3 +2012,5 @@ snapshots:
       react: 18.3.1
 
   util-deprecate@1.0.2: {}
+
+  zod@4.3.6: {}

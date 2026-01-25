@@ -46,7 +46,7 @@ export function Auth() {
 				className='w-1/4 m-auto shadow bg-sidebar rounded-xl p-layout'
 				onSubmit={handleSubmit(onSubmit)}
 			>
-				<Heading title='Auth' />
+				<Heading title='Вход в кабинет' />
 
 				<Field
 					id='email'
@@ -71,8 +71,8 @@ export function Auth() {
 				/>
 
 				<div className='flex items-center gap-5 justify-center'>
-					<Button onClick={() => setIsLoginForm(true)}>Login</Button>
-					<Button onClick={() => setIsLoginForm(false)}>Register</Button>
+					<Button onClick={() => setIsLoginForm(true)}>Вход</Button>
+					<Button onClick={() => setIsLoginForm(false)}>Регистрация</Button>
 				</div>
 			</form>
 		</div>

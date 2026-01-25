@@ -1,9 +1,10 @@
-import cn from 'clsx'
 import { X } from 'lucide-react'
 
 import { Badge } from '@/components/ui/Badge'
 
 import { useOutside } from '@/hooks/useOutside'
+
+import { cn } from '@/lib/utils'
 
 export interface IOption {
 	label: string

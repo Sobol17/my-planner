@@ -11,7 +11,7 @@ export const authService = {
 			data
 		)
 
-		if (response.data.accessToken) saveTokenStorage(response.data.accessToken)
+		if (response.data.access_token) saveTokenStorage(response.data.access_token)
 
 		return response
 	},
@@ -21,7 +21,7 @@ export const authService = {
 			'/auth/login/access-token'
 		)
 
-		if (response.data.accessToken) saveTokenStorage(response.data.accessToken)
+		if (response.data.access_token) saveTokenStorage(response.data.access_token)
 
 		return response
 	},

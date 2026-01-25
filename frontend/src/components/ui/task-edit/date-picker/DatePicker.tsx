@@ -1,4 +1,3 @@
-import cn from 'clsx'
 import dayjs from 'dayjs'
 import LocalizedFormat from 'dayjs/plugin/localizedFormat'
 import { X } from 'lucide-react'
@@ -10,6 +9,7 @@ import { useOutside } from '@/hooks/useOutside'
 
 import './DatePicker.scss'
 import { formatCaption } from './DatePickerCaption'
+import { cn } from '@/lib/utils'
 
 dayjs.extend(LocalizedFormat)
 

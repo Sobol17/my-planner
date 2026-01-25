@@ -65,6 +65,7 @@ model Contract {
   services ContractService[]
   products ContractProduct[]
 
+  @@index([createdAt])
   @@map("contract")
 }
 

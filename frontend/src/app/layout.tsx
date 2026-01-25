@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 		default: SITE_NAME,
 		template: `%s | ${SITE_NAME}`
 	},
-	description: 'Best one for planning from RED GROUP [htmllessons.ru]'
+	description: 'CRM система для ритуальной службы Архангел'
 }
 
 export default function RootLayout({
@@ -30,7 +30,10 @@ export default function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang='en'>
+		<html
+			lang='en'
+			suppressHydrationWarning
+		>
 			<body className={cn(zen.className)}>
 				<Providers>
 					{children}
