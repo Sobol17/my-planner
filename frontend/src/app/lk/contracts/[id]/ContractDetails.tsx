@@ -1,15 +1,18 @@
 'use client'
 
 import type { ReactNode } from 'react'
+import { Controller } from 'react-hook-form'
 
 import { Heading } from '@/components/ui/Heading'
 import Loader from '@/components/ui/Loader'
 import { Button } from '@/components/ui/buttons/Button'
+import Checkbox from '@/components/ui/checkbox'
 import { Field } from '@/components/ui/fields/Field'
 
 import { formatDate } from '@/utils/formatDate'
 
-import { useContractDetails } from './useContractDetails'
+import { SaleSelect } from './SaleSelect'
+import { useContractDetails } from './hooks/useContractDetails'
 
 interface ContractDetailsProps {
 	id: string
@@ -46,12 +49,14 @@ export function ContractDetails({ id }: ContractDetailsProps) {
 		errors,
 		register,
 		handleSubmit,
+		control,
 		serviceFields,
 		appendService,
 		removeService,
 		productFields,
 		appendProduct,
 		removeProduct,
+		calculatedPrice,
 		onSubmit,
 		downloadDocument
 	} = useContractDetails({ id })
@@ -70,12 +75,10 @@ export function ContractDetails({ id }: ContractDetailsProps) {
 				value: normalizeValue(formatDate(contract.contractDate))
 			},
 			{ label: 'ФИО заказчика', value: contract.clientFullName },
-			{ label: 'Паспорт заказчика', value: contract.clientPassport },
-			{ label: 'Стоимость', value: contract.price },
+			{ label: 'Телефон заказчика', value: contract.clientPhone },
 			{ label: 'Комментарий', value: contract.comment },
 			{ label: 'Адрес', value: contract.deadmanAddress },
 			{ label: 'ФИО умершего', value: contract.deadmanFullName },
-			{ label: 'Возраст умершего', value: contract.deadmanAge },
 			{ label: 'Дата рождения', value: contract.deadmanBirthday },
 			{ label: 'Дата смерти', value: contract.deadmanDeathDay },
 			{
@@ -99,7 +102,7 @@ export function ContractDetails({ id }: ContractDetailsProps) {
 			<div>
 				<Heading title={`Договор ${contract.contractNumber}`} />
 
-				<div className='grid grid-cols-2 gap-6 mt-6'>
+				<div className='flex flex-col gap-6 mt-6'>
 					{detailItems.map(item => (
 						<div
 							key={item.label}
@@ -178,10 +181,10 @@ export function ContractDetails({ id }: ContractDetailsProps) {
 			<Heading title='Новый договор' />
 
 			<form
-				className='mt-6 grid gap-8'
+				className='mt-6 flex flex-col gap-8'
 				onSubmit={handleSubmit(onSubmit)}
 			>
-				<div className='grid grid-cols-2 gap-6'>
+				<div className='flex flex-col gap-6 w-1/2'>
 					<div>
 						<Field
 							id='contract_number'
@@ -215,40 +218,6 @@ export function ContractDetails({ id }: ContractDetailsProps) {
 
 					<div>
 						<Field
-							id='client_passport'
-							label='Паспорт'
-							placeholder='4510 123456'
-							{...register('client_passport')}
-						/>
-						<ErrorMessage message={errors.client_passport?.message} />
-					</div>
-
-					<div>
-						<Field
-							id='price'
-							label='Стоимость'
-							placeholder='15000'
-							type='number'
-							isNumber
-							{...register('price', {
-								valueAsNumber: true
-							})}
-						/>
-						<ErrorMessage message={errors.price?.message} />
-					</div>
-
-					<div>
-						<Field
-							id='comment'
-							label='Комментарий'
-							placeholder='Без доп. условий'
-							{...register('comment')}
-						/>
-						<ErrorMessage message={errors.comment?.message} />
-					</div>
-
-					<div>
-						<Field
 							id='deadman_address'
 							label='Адрес'
 							placeholder='г. Москва, ул. Примерная, д. 10'
@@ -259,26 +228,23 @@ export function ContractDetails({ id }: ContractDetailsProps) {
 
 					<div>
 						<Field
+							id='client_phone'
+							label='Телефон'
+							type='tel'
+							placeholder='+79149242356'
+							{...register('client_phone')}
+						/>
+						<ErrorMessage message={errors.client_phone?.message} />
+					</div>
+
+					<div>
+						<Field
 							id='deadman_full_name'
 							label='ФИО умершего'
 							placeholder='Смирнов Тест Тестович'
 							{...register('deadman_full_name')}
 						/>
 						<ErrorMessage message={errors.deadman_full_name?.message} />
-					</div>
-
-					<div>
-						<Field
-							id='deadman_age'
-							label='Возраст'
-							placeholder='62'
-							type='number'
-							isNumber
-							{...register('deadman_age', {
-								valueAsNumber: true
-							})}
-						/>
-						<ErrorMessage message={errors.deadman_age?.message} />
 					</div>
 
 					<div>
@@ -458,9 +424,54 @@ export function ContractDetails({ id }: ContractDetailsProps) {
 					</div>
 				</div>
 
+				<div>
+					<Field
+						id='comment'
+						label='Комментарий'
+						placeholder='Без доп. условий'
+						{...register('comment')}
+					/>
+					<ErrorMessage message={errors.comment?.message} />
+				</div>
+
+				<div className='text-base font-medium flex items-end justify-between'>
+					<div>
+						<Controller
+							control={control}
+							name='sale_percent'
+							render={({ field }) => (
+								<SaleSelect
+									value={field.value}
+									onChange={field.onChange}
+								/>
+							)}
+						/>
+						<ErrorMessage message={errors.sale_percent?.message} />
+						<div className='mt-3 flex items-center gap-2'>
+							<Checkbox
+								id='funeral_benefit_deduction'
+								{...register('funeral_benefit_deduction')}
+							/>
+							<label
+								htmlFor='funeral_benefit_deduction'
+								className='text-sm text-primary/70'
+							>
+								Вычет пособия на погребение
+							</label>
+						</div>
+					</div>
+					Итоговая сумма: {calculatedPrice}
+				</div>
+				<input
+					type='hidden'
+					{...register('price', { valueAsNumber: true })}
+				/>
+				<ErrorMessage message={errors.price?.message} />
+
 				<Button
 					type='submit'
 					disabled={isPending}
+					className='max-w-[320px]'
 				>
 					Создать договор
 				</Button>

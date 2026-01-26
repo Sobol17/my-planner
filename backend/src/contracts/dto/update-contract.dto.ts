@@ -15,7 +15,7 @@ export class UpdateContractDto {
 
 	@IsOptional()
 	@IsString()
-	clientPassport?: string
+	clientPhone?: string
 
 	@IsOptional()
 	@IsInt()

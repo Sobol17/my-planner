@@ -34,7 +34,7 @@ export class AuthService {
 	}
 
 	async register(dto: AuthDto) {
-		const existingUser = await this.userService.getByEmail(dto.email)
+		const existingUser = await this.userService.getByPhone(dto.phone)
 
 		if (existingUser) throw new BadGatewayException('User already exists')
 
@@ -64,7 +64,7 @@ export class AuthService {
 	}
 
 	private async validateUser(dto: AuthDto) {
-		const user = await this.userService.getByEmail(dto.email)
+		const user = await this.userService.getByPhone(dto.phone)
 
 		if (!user) throw new NotFoundException('User not found')
 

@@ -10,13 +10,13 @@ export class UserService {
 
 	getById(id: string) {
 		return this.prisma.user.findUnique({
-			where: { id },
+			where: { id }
 		})
 	}
 
-	getByEmail(email: string) {
+	getByPhone(phone: string) {
 		return this.prisma.user.findUnique({
-			where: { email }
+			where: { phone }
 		})
 	}
 
@@ -29,13 +29,13 @@ export class UserService {
 		const { password, ...profileWithOutPassword } = profile
 
 		return {
-			user: profileWithOutPassword,
+			user: profileWithOutPassword
 		}
 	}
 
 	async create(dto: AuthDto) {
 		const user = {
-			email: dto.email,
+			phone: dto.phone,
 			name: '',
 			password: await hash(dto.password)
 		}
@@ -59,7 +59,7 @@ export class UserService {
 			data,
 			select: {
 				name: true,
-				email: true
+				phone: true
 			}
 		})
 	}

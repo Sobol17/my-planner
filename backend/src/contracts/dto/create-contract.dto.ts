@@ -54,7 +54,7 @@ export class CreateContractDto {
 	clientFullName: string
 
 	@IsString()
-	clientPassport: string
+	clientPhone: string
 
 	@IsInt()
 	@Min(0)

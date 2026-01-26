@@ -36,7 +36,7 @@ export function DataTable<TData, TValue>({
 	return (
 		<div className='overflow-hidden rounded-md border font-[400]'>
 			<Table>
-				<TableHeader className='bg-primary/10'>
+				<TableHeader className='bg-brand-100/20'>
 					{table.getHeaderGroups().map(headerGroup => (
 						<TableRow key={headerGroup.id}>
 							{headerGroup.headers.map(header => {
@@ -60,7 +60,7 @@ export function DataTable<TData, TValue>({
 							<TableRow
 								key={row.id}
 								data-state={row.getIsSelected() && 'selected'}
-								className={`${onRowClick ? 'cursor-pointer ' : ''}odd:bg-muted`}
+								className={`${onRowClick ? 'cursor-pointer ' : ''}`}
 								onClick={() => onRowClick?.(row.original)}
 							>
 								{row.getVisibleCells().map(cell => (

@@ -26,8 +26,8 @@ export class ContractsController {
 	@HttpCode(200)
 	@Post()
 	@Auth()
-	async createContract(@Body() dto: CreateContractDto) {
-		return this.contractsService.createContract(dto)
+	async create(@Body() dto: CreateContractDto) {
+		return this.contractsService.create(dto)
 	}
 
 	@Get(':id/download')

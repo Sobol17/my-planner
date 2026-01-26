@@ -15,7 +15,7 @@ export function Profile() {
 				<div className='flex items-center'>
 					<div className='text-right mr-3'>
 						<p className='font-bold -mb-1'>{data?.user.name}</p>
-						<p className='text-sm opacity-40'>{data?.user.email}</p>
+						<p className='text-sm opacity-40'>{data?.user.phone}</p>
 					</div>
 
 					<div className='w-10 h-10 flex justify-center items-center text-2xl text-primary bg-primary/20 rounded uppercase'>

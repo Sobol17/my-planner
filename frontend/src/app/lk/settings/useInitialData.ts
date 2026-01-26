@@ -11,7 +11,7 @@ export function useInitialData(reset: UseFormReset<TypeUserForm>) {
 	useEffect(() => {
 		if (isSuccess && data) {
 			reset({
-				email: data.user.email,
+				phone: data.user.phone,
 				name: data.user.name,
 				breakInterval: data.user.breakInterval,
 				intervalsCount: data.user.intervalsCount,

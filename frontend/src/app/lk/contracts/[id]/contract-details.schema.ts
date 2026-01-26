@@ -37,6 +37,23 @@ const requiredNumber = (
 			.min(minValue, minMessage)
 	)
 
+const requiredPercent = (
+	requiredMessage: string,
+	invalidMessage: string,
+	minMessage: string,
+	maxMessage: string
+) =>
+	z.preprocess(
+		toNumber,
+		z
+			.number({
+				required_error: requiredMessage,
+				invalid_type_error: invalidMessage
+			})
+			.min(0, minMessage)
+			.max(100, maxMessage)
+	)
+
 const dateString = (
 	requiredMessage: string,
 	formatMessage: string,
@@ -88,6 +105,13 @@ export const contractDetailsSchema = z.object({
 		'Стоимость должна быть 0 или больше',
 		'Стоимость должна быть числом'
 	),
+	sale_percent: requiredPercent(
+		'Укажите процент скидки',
+		'Процент скидки должен быть числом',
+		'Процент скидки должен быть 0 или больше',
+		'Процент скидки должен быть 100 или меньше'
+	),
+	funeral_benefit_deduction: z.boolean().optional(),
 	comment: requiredString('Укажите комментарий'),
 	deadman_address: requiredString('Укажите адрес'),
 	deadman_full_name: requiredString('Укажите ФИО умершего'),

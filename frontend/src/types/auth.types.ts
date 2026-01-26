@@ -1,12 +1,12 @@
 export interface IAuthForm {
-	email: string
+	phone: string
 	password: string
 }
 
 export interface IUser {
 	id: number
 	name?: string
-	email: string
+	phone: string
 
 	workInterval?: number
 	breakInterval?: number

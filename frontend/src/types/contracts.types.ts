@@ -5,7 +5,7 @@ export interface ContractDto extends IBase {
 	contract_number: string
 	contract_date: string
 	client_full_name: string
-	client_passport: string
+	client_phone: string
 	price: number
 	comment: string
 	deadman_address: string
@@ -22,8 +22,9 @@ export interface ContractCreateDto {
 	contract_number: string
 	contract_date: string
 	client_full_name: string
-	client_passport: string
+	client_phone: string
 	price: number
+	sale_percent: number
 	comment: string
 	deadman_address: string
 	deadman_full_name: string
@@ -57,7 +58,7 @@ export interface IContract {
 	contractNumber: string
 	contractDate: string
 	clientFullName: string
-	clientPassport: string
+	clientPhone: string
 	price: string
 	comment: string
 	deadmanAddress: string

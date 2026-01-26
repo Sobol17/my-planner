@@ -29,7 +29,7 @@ export class PomodoroSettingsDto {
 export class UserDto extends PomodoroSettingsDto {
 	@IsOptional()
 	@IsEmail()
-	email?: string
+	phone?: string
 
 	@IsOptional()
 	@IsString()

@@ -10,34 +10,26 @@ import { IContract } from '@/types/contracts.types'
 export const columns: ColumnDef<IContract>[] = [
 	{
 		accessorKey: 'contractNumber',
-		header: 'Номер'
-	},
-	{
-		accessorKey: 'clientPassport',
-		header: 'Паспорт'
-	},
-	{
-		accessorKey: 'clientFullName',
-		header: 'ФИО заказчика'
-	},
-	{
-		accessorKey: 'price',
-		header: 'Итог'
+		header: 'Номер договора'
 	},
 	{
 		accessorKey: 'createdAt',
 		header: 'Дата заключения'
 	},
 	{
-		accessorKey: 'deadmanAddress',
-		header: 'Адрес'
-	},
-	{
 		accessorKey: 'deadmanFullName',
-		header: 'Умерший'
+		header: 'ФИО умершего'
 	},
 	{
-		accessorKey: 'deadmanDeathDay',
-		header: 'Д.С Умершего'
+		accessorKey: 'clientFullName',
+		header: 'ФИО заказчика'
+	},
+	{
+		accessorKey: 'clientPhone',
+		header: 'Телефон заказчика'
+	},
+	{
+		accessorKey: 'price',
+		header: 'Итог'
 	}
 ]

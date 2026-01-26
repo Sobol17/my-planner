@@ -43,29 +43,29 @@ export function Auth() {
 	return (
 		<div className='flex min-h-screen'>
 			<form
-				className='w-1/4 m-auto shadow bg-sidebar rounded-xl p-layout'
+				className='w-1/4 m-auto shadow-md bg-brand-100/5 rounded-xl p-layout'
 				onSubmit={handleSubmit(onSubmit)}
 			>
 				<Heading title='Вход в кабинет' />
 
 				<Field
-					id='email'
-					label='Email:'
-					placeholder='Enter email:'
-					type='email'
+					id='phone'
+					label='Телефон:'
+					placeholder='Введите телефон:'
+					type='phone'
 					extra='mb-4'
-					{...register('email', {
-						required: 'Email is required!'
+					{...register('phone', {
+						required: 'Телефон обязателен!'
 					})}
 				/>
 
 				<Field
 					id='password'
-					label='Password: '
-					placeholder='Enter password: '
+					label='Пароль: '
+					placeholder='Введите пароль: '
 					type='password'
 					{...register('password', {
-						required: 'Password is required!'
+						required: 'Пароль обязателен!'
 					})}
 					extra='mb-6'
 				/>
