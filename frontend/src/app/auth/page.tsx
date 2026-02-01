@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
+import { redirect } from 'next/navigation'
 
 import { NO_INDEX_PAGE } from '@/constants/seo.constants'
-
-import { Auth } from './Auth'
 
 export const metadata: Metadata = {
 	title: 'Вход в кабинет',
@@ -10,5 +9,6 @@ export const metadata: Metadata = {
 }
 
 export default function AuthPage() {
-	return <Auth />
+	// return <Auth />
+	redirect('/')
 }

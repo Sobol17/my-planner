@@ -11,6 +11,15 @@ const config: Config = {
 	theme: {
 		extend: {
 			colors: {
+				'bg-main': '#f2f3f4',
+				'bg-card': '#fff',
+				'text-main': '#2b2b2b',
+				'text-second': '#6a6a6a',
+				'accent-land': '#6e7a77',
+				'muted-land': 'rgba(31,31,31,0.6)',
+				'primary-land': '#1f3d3a',
+				primaryDark: '#18312f',
+				primarySoft: 'rgba(31,61,58,0.08)',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				card: {

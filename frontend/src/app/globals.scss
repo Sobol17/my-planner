@@ -8,8 +8,12 @@
 	--background-end-rgb: 255, 255, 255;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 body {
-	@apply text-base overflow-hidden text-foreground bg-background;
+	@apply text-base text-foreground bg-background;
 	font-family: var(--font-zen), sans-serif;
 
 	@media (max-width: 1200px) {
@@ -63,6 +67,54 @@ input:checked.defaultCheckbox::before {
 
 .animation-opacity {
 	animation: opacity_anim 0.5s;
+}
+
+.map .dg-widget-link {
+	display: block;
+}
+
+.map .dg-widget-frame {
+	height: 260px;
+	overflow: hidden;
+	border-radius: 14px;
+	background: rgba(255, 255, 255, 0.05);
+}
+
+.map iframe {
+	display: block;
+	width: 100% !important;
+	height: 100% !important;
+	border: 0;
+}
+
+.map .dg-widget-frame + .dg-widget-link {
+	margin-top: 12px;
+}
+
+.map .dg-widget-link + .dg-widget-link {
+	margin-top: 8px;
+}
+
+.map .dg-widget-link a {
+	color: inherit;
+	text-decoration: underline;
+	text-decoration-color: rgba(255, 255, 255, 0.4);
+	text-underline-offset: 4px;
+	transition: text-decoration-color 0.2s ease;
+}
+
+.map .dg-widget-link a:hover {
+	text-decoration-color: rgba(255, 255, 255, 1);
+}
+
+.swiper-pagination-bullet-active {
+	background-color: rgb(110, 122, 119) !important;
+}
+
+@media (min-width: 1024px) {
+	.map .dg-widget-frame {
+		height: 320px;
+	}
 }
 
 @keyframes opacity_anim {

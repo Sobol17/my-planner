@@ -21,7 +21,11 @@ export const metadata: Metadata = {
 		default: SITE_NAME,
 		template: `%s | ${SITE_NAME}`
 	},
-	description: 'CRM система для ритуальной службы Архангел'
+	description: 'CRM система для ритуальной службы Архангел',
+	icons: {
+		icon: '/fav.png',
+		apple: '/fav.png'
+	}
 }
 
 export default function RootLayout({
