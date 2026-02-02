@@ -4,8 +4,9 @@ import Image from 'next/image'
 import { A11y, Keyboard, Navigation, Pagination, Thumbs } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-import { useCoffinsModal } from '@/hooks/landing/useCoffinsModal'
 import type { PackageData } from '@/types/landing.types'
+
+import { useCoffinsModal } from '@/hooks/landing/useCoffinsModal'
 
 import { ArrowBtn } from './ArrowBtn'
 import { CoffinPreview } from './CoffinPreview'
@@ -53,7 +54,8 @@ export function CoffinsModal({
 				role='dialog'
 				aria-modal='true'
 				aria-label='Выбор гроба'
-				className='relative mx-auto mt-[6vh] w-[min(920px,92vw)] overflow-hidden rounded-[18px] border border-white/40 bg-white/95 shadow-[0_18px_60px_rgba(12,16,20,0.25)] outline-none'
+				className='relative mx-auto mt-[6vh] w-[min(920px,92vw)] max-h-[88vh]  overflow-y-auto lg:overflow-hidden rounded-[18px] border border-white/40 bg-white/95 shadow-[0_18px_60px_rgba(12,16,20,0.25)] outline-none'
+				style={{ WebkitOverflowScrolling: 'touch' }}
 			>
 				<div className='flex items-start justify-between gap-4 px-5 pb-0 pt-5'>
 					<div className='grid gap-0.5'>
@@ -215,7 +217,7 @@ export function CoffinsModal({
 						</div>
 
 						<a
-							href='tel:+70000000000'
+							href='tel:+79500550266'
 							className='mt-1 inline-flex items-center justify-center rounded-xl bg-accent-land px-4 py-3 font-medium text-white transition active:translate-y-[1px] hover:bg-primaryDark'
 						>
 							Позвонить и уточнить

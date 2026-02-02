@@ -41,8 +41,8 @@ export function Settings() {
 							label='Email: '
 							placeholder='Enter email: '
 							type='email'
-							{...register('email', {
-								required: 'Email is required!'
+							{...register('phone', {
+								required: 'Phone is required!'
 							})}
 							extra='mb-4'
 						/>

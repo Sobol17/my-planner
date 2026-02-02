@@ -1,6 +1,8 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 import { NAV_ITEMS } from '@/constants/landing.constants'
@@ -9,6 +11,23 @@ import { BurgerMenu } from './BurgerMenu'
 
 export function Header() {
 	const [menuOpen, setMenuOpen] = useState(false)
+	const pathname = usePathname()
+	const isHome = pathname === '/'
+	const navItems = NAV_ITEMS.map(item => {
+		if (item.href === '#articles') {
+			return {
+				...item,
+				href: isHome ? item.href : '/articles'
+			}
+		}
+		if (item.href.startsWith('#')) {
+			return {
+				...item,
+				href: isHome ? item.href : `/${item.href}`
+			}
+		}
+		return item
+	})
 
 	useEffect(() => {
 		if (!menuOpen) return
@@ -30,23 +49,26 @@ export function Header() {
 		<>
 			<header className='sticky top-0 z-50 border-b border-black/10 bg-white/90 backdrop-blur'>
 				<div className='mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4'>
-					<div className='flex sm:min-w-[220px] items-center gap-3'>
+					<Link
+						href='/'
+						className='flex sm:min-w-[220px] items-center gap-3'
+					>
 						<Image
 							src='/logotipe_new.png'
 							alt='logo'
 							width={240}
 							height={60}
-							className='h-10 w-40 sm:h-[60px] sm:w-[240px]'
+							className='h-[32px] w-[120px] sm:h-[60px] sm:w-[240px]'
 						/>
-					</div>
+					</Link>
 
 					<nav
 						className='hidden flex-1 items-center justify-center gap-2 lg:flex'
 						aria-label='Навигация'
 					>
-						{NAV_ITEMS.map(item => (
+						{navItems.map(item => (
 							<a
-								key={item.href}
+								key={item.label}
 								className='rounded-xl px-3 py-2 text-sm text-black/60 transition hover:bg-primarySoft hover:text-black'
 								href={item.href}
 							>
@@ -93,7 +115,7 @@ export function Header() {
 			<BurgerMenu
 				open={menuOpen}
 				onClose={() => setMenuOpen(false)}
-				items={NAV_ITEMS}
+				items={navItems}
 			/>
 		</>
 	)

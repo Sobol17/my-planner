@@ -1,5 +1,6 @@
 'use client'
 
+import { ArticleSection } from '@/components/landing/ArticleSection'
 import { CoffinsModal } from '@/components/landing/CoffinsModal'
 import { Footer } from '@/components/landing/Footer'
 import { Header } from '@/components/landing/Header'
@@ -9,7 +10,9 @@ import { Reviews } from '@/components/landing/Reviews'
 import { Services } from '@/components/landing/Services'
 import { Steps } from '@/components/landing/Steps'
 import { Trust } from '@/components/landing/Trust'
+
 import { PACKAGES } from '@/constants/landing.constants'
+
 import { useLandingPackages } from '@/hooks/landing/useLandingPackages'
 
 export function LandingPageClient() {
@@ -37,6 +40,7 @@ export function LandingPageClient() {
 			/>
 			<Reviews />
 			<Trust />
+			<ArticleSection />
 			<Footer />
 
 			<CoffinsModal

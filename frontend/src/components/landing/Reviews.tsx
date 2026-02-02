@@ -26,8 +26,9 @@ export function Reviews() {
 				<SectionHeading
 					title='Отзывы'
 					subtitle='Что о нас говорят'
+					margin
 				/>
-				<div>
+				<div className='mb-4'>
 					Все отзывы Вы можете посмотреть{' '}
 					<a
 						href='https://2gis.ru/irkutsk/firm/70000001044403974/tab/reviews?m=104.314689%2C52.265302%2F16.18'
@@ -70,6 +71,7 @@ export function Reviews() {
 						}}
 						onSwiper={setSwiper}
 						className='!pb-10'
+						loop
 					>
 						{REVIEWS.map(r => {
 							const reviewId = `${r.name}-${r.city}`

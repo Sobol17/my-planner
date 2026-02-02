@@ -21,6 +21,13 @@ export function Footer() {
 				>
 					+7 950-055-02-66
 				</a>
+				<br />
+				<a
+					href='tel:+9027671717'
+					className='inline-block text-[26px] font-semibold'
+				>
+					+7 902-767-17-17
+				</a>
 				<p className='mt-2 opacity-90'>ул. Волжская 14, офис 105</p>
 				<p className='mt-2 text-sm opacity-80'>
 					Круглосуточно.{' '}
@@ -31,7 +38,6 @@ export function Footer() {
 						ms.natali.81@mail.ru
 					</a>
 				</p>
-
 				<div className='mt-6 grid gap-5 lg:grid-cols-[1.1fr_1fr]'>
 					<div className='rounded-[18px] border border-white/20 bg-white/10 p-5'>
 						<p className='opacity-90'>
@@ -71,10 +77,11 @@ export function Footer() {
 									</svg>
 								</a>
 								<a
-									href='#'
+									href='https://max.ru/u/f9LHodD0cOKe0RO5S5VorwyVXLJ9Wf62aV7UpHj3VuRyD2aiNYQT-Q4Xy8Q'
 									aria-label='MAX'
 									title='MAX'
 									className='group grid h-9 w-9 place-items-center rounded-full border border-white/25 bg-white/10 text-white/80 transition hover:border-white/60 hover:bg-white/20 hover:text-white'
+									target='_blank'
 								>
 									<img
 										src='/max.svg'
@@ -94,26 +101,24 @@ export function Footer() {
 						/>
 					</div>
 				</div>
-
 				<div className='mt-6 border-t border-white/15 pt-4 text-xs opacity-80'>
 					<div className='flex flex-wrap items-center gap-x-4 gap-y-2'>
 						<span>ИНН: 381114399823</span>
 						<span>ОГРН: 320385000040322</span>
 						<a
-							href='/'
+							href='/privacy'
 							className='underline decoration-white/40 underline-offset-4 transition hover:decoration-white'
 						>
 							Политика конфиденциальности
 						</a>
 						<a
-							href='/'
+							href='/consent'
 							className='underline decoration-white/40 underline-offset-4 transition hover:decoration-white'
 						>
 							Согласие на обработку данных
 						</a>
 					</div>
 				</div>
-
 				<p className='mt-5 text-xs opacity-70'>
 					© Ритуальная служба. Информация на сайте не является публичной
 					офертой.

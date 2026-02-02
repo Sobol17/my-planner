@@ -13,7 +13,7 @@ export function Steps() {
 			<div className='mx-auto max-w-6xl px-6'>
 				<SectionHeading
 					title='Как мы работаем'
-					subtitle='Чёткий порядок снижает тревожность. Вы понимаете, что будет дальше.'
+					subtitle='Четкий порядок снижает тревожность. Вы понимаете, что будет дальше.'
 				/>
 
 				<div className='relative pt-2'>

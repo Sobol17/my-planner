@@ -49,3 +49,16 @@ export type NavItem = {
 }
 
 export type HeroBadge = string
+
+export type ArticlePreview = {
+	id: string
+	title: string
+	excerpt: string
+	tag: string
+	date: string
+	readTime: string
+}
+
+export type Article = ArticlePreview & {
+	contentHtml: string
+}

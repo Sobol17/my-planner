@@ -18,6 +18,7 @@ const config: Config = {
 				'accent-land': '#6e7a77',
 				'muted-land': 'rgba(31,31,31,0.6)',
 				'primary-land': '#1f3d3a',
+				primary: '#171717',
 				primaryDark: '#18312f',
 				primarySoft: 'rgba(31,61,58,0.08)',
 				background: 'hsl(var(--background))',
@@ -29,10 +30,6 @@ const config: Config = {
 				popover: {
 					DEFAULT: 'hsl(var(--popover))',
 					foreground: 'hsl(var(--popover-foreground))'
-				},
-				primary: {
-					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
@@ -243,6 +240,7 @@ const config: Config = {
 			}
 		},
 		colors: {
+			black: '#000000',
 			white: '#ffffff',
 			lightPrimary: '#F4F7FE',
 			blueSecondary: '#4318FF',

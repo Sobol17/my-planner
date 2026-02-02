@@ -1,6 +1,7 @@
 'use client'
 
 import type { FenceState, PackageData, PackageId } from '@/types/landing.types'
+
 import { BENEFIT, rub } from '@/utils/landing'
 
 import { PackageCard } from './PackageCard'
@@ -28,12 +29,19 @@ export function PackagesSection({
 				<SectionHeading
 					title='Пакеты услуг'
 					subtitle='В каждом пакете — выбор гробов.'
+					additionalText='В пакеты не входит стоимость могилы.'
 				/>
 
-				<div className='mb-4 max-w-[80ch] text-[13px] text-black/60'>
+				<div className='max-w-[80ch] text-[13px] text-black/60'>
 					Цены указаны{' '}
-					<strong className='text-black'>с учётом пособия</strong> (−{' '}
-					{rub(BENEFIT)}).
+					<strong className='text-black'>
+						с учетом вычета пособия на погребение
+					</strong>{' '}
+					(− {rub(BENEFIT)}).
+				</div>
+				<div className='mb-4 max-w-[80ch] text-[13px] text-black/60'>
+					Доплата за нестандартные размеры (вес тела свыше 100 кг / длина гроба
+					свыше 2 м) {rub(3500)}.
 				</div>
 
 				<div className='grid items-start gap-5 lg:grid-cols-2'>

@@ -9,11 +9,7 @@ import { LandingPageClient } from '@/components/landing/LandingPageClient'
 export const metadata: Metadata = {
 	title: 'Агентство ритуальных услуг в Иркутске | «Архангел»',
 	description:
-		'Ритуальное агентство АРХАНГЕЛ. Предоставляем полный комплекс услуг по захоронению в Иркутске и Иркутской области.',
-	icons: {
-		icon: '/fav.png',
-		apple: '/fav.png'
-	}
+		'Ритуальное агентство АРХАНГЕЛ. Предоставляем полный комплекс услуг по захоронению в Иркутске и Иркутской области.'
 }
 
 export default function Home() {

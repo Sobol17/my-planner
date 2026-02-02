@@ -1,7 +1,9 @@
 'use client'
 
 import { CheckItem } from '@/components/landing/CheckItem'
+
 import type { PackageData } from '@/types/landing.types'
+
 import { computePackagePrice, rub } from '@/utils/landing'
 
 type PackageCardProps = {
@@ -135,7 +137,7 @@ export function PackageCard({
 
 			<div className='mt-1 grid gap-2 sm:grid-cols-2'>
 				<a
-					href='tel:+70000000000'
+					href='tel:+79500550266'
 					className='inline-flex w-full items-center justify-center rounded-xl bg-accent-land px-4 py-3 font-medium text-white transition active:translate-y-[1px] hover:bg-primaryDark'
 				>
 					Позвонить

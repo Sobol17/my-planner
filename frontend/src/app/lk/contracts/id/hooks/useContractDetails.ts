@@ -1,9 +1,10 @@
 'use client'
 
-import { useEffect, useMemo } from 'react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
+import { useEffect, useMemo } from 'react'
 import {
+	type FieldErrors,
 	type Resolver,
 	SubmitHandler,
 	useFieldArray,
@@ -24,6 +25,7 @@ import { contractService } from '@/services/contracts.service'
 const emptyService = { service_id: '', price: 0, comment: '' }
 const emptyProduct = { product_id: '', quantity: 1, unit_price: 0 }
 const FUNERAL_BENEFIT_AMOUNT = 11000
+const EMPTY_ERRORS: Record<string, never> = {}
 
 type ContractCreateFormValues = ContractCreateDto & {
 	funeral_benefit_deduction?: boolean
@@ -41,13 +43,18 @@ const getTodayYmd = () => {
 	return `${year}-${month}-${day}`
 }
 
-const mapZodErrors = (error: z.ZodError) => {
-	const fieldErrors: Record<string, unknown> = {}
+const mapZodErrors = (
+	error: z.ZodError
+): FieldErrors<ContractCreateFormValues> => {
+	const fieldErrors: FieldErrors<ContractCreateFormValues> = {}
 
 	for (const issue of error.issues) {
 		if (!issue.path.length) continue
 
-		let cursor: Record<string, unknown> | unknown[] = fieldErrors
+		let cursor: Record<string, unknown> | unknown[] = fieldErrors as Record<
+			string,
+			unknown
+		>
 
 		issue.path.forEach((segment, index) => {
 			const key = segment as string | number
@@ -86,18 +93,19 @@ const mapZodErrors = (error: z.ZodError) => {
 	return fieldErrors
 }
 
-const contractDetailsResolver: Resolver<ContractCreateFormValues> = async values => {
+// @ts-ignore
+const contractDetailsResolver: Resolver<ContractCreateFormValues> = values => {
 	const result = contractDetailsSchema.safeParse(values)
 
 	if (result.success) {
 		return {
 			values: result.data,
-			errors: {}
+			errors: EMPTY_ERRORS
 		}
 	}
 
 	return {
-		values: {},
+		values: {} as Record<string, never>,
 		errors: mapZodErrors(result.error)
 	}
 }

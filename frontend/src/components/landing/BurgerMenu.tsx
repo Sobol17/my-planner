@@ -74,7 +74,7 @@ export function BurgerMenu({ items, open, onClose }: BurgerMenuProps) {
 						Позвонить
 					</a>
 					<p className='mt-3 text-center text-xs text-black/50'>
-						Круглосуточно • Ответим в течение 5–10 минут
+						Круглосуточно
 					</p>
 				</div>
 			</div>

@@ -46,7 +46,7 @@ export function contractsMapper(rawObject: ContractDto): IContract {
 		contractNumber: rawObject.contract_number,
 		contractDate: rawObject.contract_date,
 		clientFullName: rawObject.client_full_name,
-		clientPassport: rawObject.client_passport,
+		clientPhone: rawObject.client_phone,
 		price: normalizePrice(rawObject.price),
 		comment: rawObject.comment,
 		deadmanAddress: rawObject.deadman_address,

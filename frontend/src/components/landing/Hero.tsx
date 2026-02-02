@@ -36,7 +36,7 @@ export function Hero() {
 
 					<div className='flex flex-wrap items-center gap-3'>
 						<a
-							href='tel:+70000000000'
+							href='tel:+79500550266'
 							className='inline-flex items-center justify-center gap-2 rounded-xl bg-accent-land px-6 py-3.5 font-medium text-white transition active:translate-y-[1px] hover:bg-primaryDark w-full sm:w-auto'
 						>
 							Позвонить сейчас
@@ -96,7 +96,7 @@ export function Hero() {
 							</small>
 						</div>
 						<a
-							href='tel:+70000000000'
+							href='tel:+79500550266'
 							className='inline-flex items-center justify-center rounded-xl bg-accent-land px-4 py-2.5 font-medium text-white transition active:translate-y-[1px] hover:bg-primaryDark'
 						>
 							Связаться
