@@ -42,28 +42,28 @@ export function Header() {
 	return (
 		<>
 			<header className='sticky top-0 z-50 border-b border-black/10 bg-white/90 backdrop-blur'>
-				<div className='mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4'>
+				<div className='mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-4'>
 					<Link
 						href='/'
-						className='flex sm:min-w-[220px] items-center gap-3'
+						className='flex shrink-0 items-center gap-3'
 					>
 						<Image
 							src='/logotipe_new.png'
 							alt='logo'
 							width={240}
 							height={60}
-							className='h-[32px] w-[120px] sm:h-[60px] sm:w-[240px]'
+							className='h-[32px] w-[120px] sm:h-[58px] sm:w-[230px]'
 						/>
 					</Link>
 
 					<nav
-						className='hidden flex-1 items-center justify-center gap-2 lg:flex'
+						className='hidden min-w-0 flex-1 items-center justify-center gap-1 lg:flex xl:gap-2'
 						aria-label='Навигация'
 					>
 						{navItems.map(item => (
 							<Link
 								key={item.label}
-								className='rounded-xl px-3 py-2 text-sm text-black/60 transition hover:bg-primarySoft hover:text-black'
+								className='whitespace-nowrap rounded-xl px-2.5 py-2 text-sm text-black/60 transition hover:bg-primarySoft hover:text-black xl:px-3'
 								href={item.href}
 							>
 								{item.label}
@@ -71,12 +71,20 @@ export function Header() {
 						))}
 					</nav>
 
-					<div className='flex min-w-0 items-center justify-end gap-3 lg:min-w-[280px]'>
-						<span className='hidden rounded-full border border-black/10 bg-white/80 px-3 py-1.5 text-xs text-black/60 md:inline text-nowrap'>
-							Организация • cопровождение 24/7
-						</span>
+					<div className='flex shrink-0 items-center justify-end gap-3'>
+						<div className='hidden lg:flex flex-col items-end'>
+							<a
+								className='whitespace-nowrap rounded-xl border border-black/10 bg-[#fafafa] px-3.5 py-2 text-sm font-semibold text-primary transition hover:bg-white'
+								href='tel:+79500550266'
+							>
+								+7 (950) 055-02-66
+							</a>
+							<p className='mt-1 whitespace-nowrap text-[11px] leading-none text-black/55'>
+								Организация и сопровождение 24/7
+							</p>
+						</div>
 						<a
-							className='font-semibold text-primary text-xs'
+							className='whitespace-nowrap font-semibold text-primary text-xs lg:hidden'
 							href='tel:+79500550266'
 						>
 							+7 (950) 055-02-66

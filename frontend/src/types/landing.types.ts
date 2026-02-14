@@ -32,6 +32,7 @@ export type FenceState = Record<PackageId, boolean> // true = fence included, fa
 export type ServiceItem = {
 	title: string
 	desc: string
+	href: string
 	icon: 'home' | 'doc' | 'car' | 'flame' | 'drop' | 'pin'
 }
 

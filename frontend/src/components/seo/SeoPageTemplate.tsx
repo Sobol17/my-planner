@@ -4,6 +4,7 @@ import { Footer } from '@/components/landing/Footer'
 import { Header } from '@/components/landing/Header'
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs'
 import { JsonLd } from '@/components/seo/JsonLd'
+import { BUSINESS_INFO } from '@/config/site.config'
 
 import { createBreadcrumbSchema } from '@/lib/seo'
 import type { BreadcrumbItem } from '@/lib/seo'
@@ -42,11 +43,12 @@ export function SeoPageTemplate({
 	lead,
 	sections,
 	faq,
-	relatedTitle = 'Смежные страницы',
+	relatedTitle = 'Смотрите также',
 	relatedLinks,
 	extraSchemas
 }: SeoPageTemplateProps) {
 	const schemas: Record<string, unknown>[] = []
+	const phoneHref = `tel:${BUSINESS_INFO.phonePrimary.replace(/[^\d+]/g, '')}`
 
 	if (breadcrumbs.length > 1) {
 		schemas.push(createBreadcrumbSchema(breadcrumbs))
@@ -57,7 +59,7 @@ export function SeoPageTemplate({
 	}
 
 	return (
-		<div className='bg-[#f4f5f6] text-[#1f1f1f] antialiased'>
+		<div className='bg-white text-[#1f1f1f] antialiased'>
 			{schemas.map((schema, index) => (
 				<JsonLd
 					key={index}
@@ -75,6 +77,17 @@ export function SeoPageTemplate({
 								{h1}
 							</h1>
 							<p className='mt-4 text-[16px] leading-relaxed text-black/65'>{lead}</p>
+							<div className='mt-5 flex flex-wrap gap-2 text-xs'>
+								<span className='rounded-full border border-black/10 bg-[#fafafa] px-3 py-1.5 text-black/70'>
+									Иркутск и Иркутская область
+								</span>
+								<span className='rounded-full border border-black/10 bg-[#fafafa] px-3 py-1.5 text-black/70'>
+									Поддержка 24/7
+								</span>
+								<span className='rounded-full border border-black/10 bg-[#fafafa] px-3 py-1.5 text-black/70'>
+									Понятный порядок действий
+								</span>
+							</div>
 
 							<div className='mt-8 space-y-7'>
 								{sections.map(section => (
@@ -95,6 +108,32 @@ export function SeoPageTemplate({
 									</section>
 								))}
 							</div>
+							<section className='mt-10 rounded-2xl border border-[#d6e6de] bg-[#f7faf8] p-5 sm:p-6'>
+								<h2 className='text-[22px] font-semibold'>Как мы можем помочь дальше</h2>
+								<p className='mt-3 text-[15px] leading-relaxed text-black/70'>
+									Если хотите, можно за один звонок сверить порядок действий и
+									получить спокойный план под вашу ситуацию.
+								</p>
+								<ul className='mt-4 list-disc space-y-2 pl-5 text-[15px] text-black/70'>
+									<li>Подскажем, какие шаги нужны в первую очередь.</li>
+									<li>Объясним, какие услуги можно выбрать отдельно.</li>
+									<li>Поможем согласовать удобный и понятный формат.</li>
+								</ul>
+								<div className='mt-5 flex flex-wrap gap-3'>
+									<a
+										href={phoneHref}
+										className='inline-flex items-center justify-center rounded-xl bg-accent-land px-4 py-2.5 text-sm font-medium text-white transition hover:bg-primaryDark'
+									>
+										Позвонить сейчас
+									</a>
+									<Link
+										href='/kontakty'
+										className='inline-flex items-center justify-center rounded-xl border border-black/15 bg-white px-4 py-2.5 text-sm font-medium text-black/80 transition hover:border-black/25 hover:bg-[#fafafa]'
+									>
+										Открыть контакты
+									</Link>
+								</div>
+							</section>
 
 							{faq?.length ? (
 								<section className='mt-10'>

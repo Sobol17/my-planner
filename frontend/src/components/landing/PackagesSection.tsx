@@ -1,5 +1,7 @@
 'use client'
 
+import Link from 'next/link'
+
 import type { FenceState, PackageData, PackageId } from '@/types/landing.types'
 
 import { BENEFIT, rub } from '@/utils/landing'
@@ -43,6 +45,12 @@ export function PackagesSection({
 					Доплата за нестандартные размеры (вес тела свыше 100 кг / длина гроба
 					свыше 2 м) {rub(3500)}.
 				</div>
+				<Link
+					href='/pakety-uslug'
+					className='mb-5 inline-flex items-center rounded-xl border border-black/10 bg-[#fafafa] px-4 py-2.5 text-sm font-medium text-black/75 transition hover:border-black/20 hover:bg-white'
+				>
+					Сравнить пакеты на отдельной странице
+				</Link>
 
 				<div className='grid items-start gap-5 lg:grid-cols-2'>
 					{packages.map(pkg => (
