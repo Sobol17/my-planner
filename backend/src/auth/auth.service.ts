@@ -7,7 +7,7 @@ import {
 import { ConfigService } from '@nestjs/config'
 import { JwtService } from '@nestjs/jwt'
 import { verify } from 'argon2'
-import { Response } from 'express'
+import { CookieOptions, Response } from 'express'
 import { UserService } from 'src/user/user.service'
 import { AuthDto } from './dto/auth.dto.js'
 
@@ -21,6 +21,21 @@ export class AuthService {
 
 	EXPIRE_DAY_REFRESH_TOKEN = 1
 	REFRESH_TOKEN_NAME = 'refreshToken'
+
+	private getRefreshCookieOptions(expires: Date): CookieOptions {
+		const isProduction = this.configService.get<string>('NODE_ENV') === 'production'
+		const domain = this.configService.get<string>('DOMAIN')
+
+		return {
+			httpOnly: true,
+			...(domain ? { domain } : {}),
+			expires,
+			secure: isProduction,
+			// In production cross-site auth needs SameSite=None + Secure.
+			// For local HTTP development use Lax, otherwise browser may block the cookie.
+			sameSite: isProduction ? 'none' : 'lax'
+		}
+	}
 
 	async login(dto: AuthDto) {
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -76,13 +91,12 @@ export class AuthService {
 	}
 
 	async getNewTokens(refreshToken: string) {
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-		const result = await this.jwt.verifyAsync(refreshToken)
+		const result = await this.jwt.verifyAsync<{ id: string }>(refreshToken)
 
 		if (!result) throw new UnauthorizedException('Invalid refresh token')
 
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-		const { ...user } = await this.userService.getById(result.id)
+		const user = await this.userService.getById(result.id)
+		if (!user) throw new UnauthorizedException('Invalid refresh token')
 
 		const tokens = this.issueTokens(user.id)
 
@@ -96,24 +110,18 @@ export class AuthService {
 		const expiresIn = new Date()
 		expiresIn.setDate(expiresIn.getDate() + this.EXPIRE_DAY_REFRESH_TOKEN)
 
-		res.cookie(this.REFRESH_TOKEN_NAME, refreshToken, {
-			httpOnly: true,
-			domain: this.configService.get<string>('DOMAIN'),
-			expires: expiresIn,
-			secure: true,
-			// lax if production
-			sameSite: 'none'
-		})
+		res.cookie(
+			this.REFRESH_TOKEN_NAME,
+			refreshToken,
+			this.getRefreshCookieOptions(expiresIn)
+		)
 	}
 
 	removeRefreshTokenFromResponse(res: Response) {
-		res.cookie(this.REFRESH_TOKEN_NAME, '', {
-			httpOnly: true,
-			domain: this.configService.get<string>('DOMAIN'),
-			expires: new Date(0),
-			secure: true,
-			// lax if production
-			sameSite: 'none'
-		})
+		res.cookie(
+			this.REFRESH_TOKEN_NAME,
+			'',
+			this.getRefreshCookieOptions(new Date(0))
+		)
 	}
 }

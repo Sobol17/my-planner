@@ -8,16 +8,23 @@ import { Footer } from '@/components/landing/Footer'
 import { Header } from '@/components/landing/Header'
 import { SectionHeading } from '@/components/landing/SectionHeading'
 
-import { ARTICLES } from '@/constants/landing.constants'
+import {
+	getPublicArticleBySlug,
+	getPublicArticles
+} from '@/services/public-articles.service'
+
+export const dynamic = 'force-dynamic'
 
 type ArticlePageProps = {
 	params: {
-		id: string
+		slug: string
 	}
 }
 
-export function generateMetadata({ params }: ArticlePageProps): Metadata {
-	const article = ARTICLES.find(item => item.id === params.id)
+export async function generateMetadata({
+	params
+}: ArticlePageProps): Promise<Metadata> {
+	const article = await getPublicArticleBySlug(params.slug)
 
 	if (!article) {
 		return {
@@ -31,17 +38,15 @@ export function generateMetadata({ params }: ArticlePageProps): Metadata {
 	}
 }
 
-export default function ArticlePage({ params }: ArticlePageProps) {
-	const article = ARTICLES.find(item => item.id === params.id)
+export default async function ArticlePage({ params }: ArticlePageProps) {
+	const article = await getPublicArticleBySlug(params.slug)
 
 	if (!article) {
 		notFound()
 	}
 
-	const otherArticles = ARTICLES.filter(item => item.id !== article.id).slice(
-		0,
-		2
-	)
+	const articles = await getPublicArticles()
+	const otherArticles = articles.filter(item => item.id !== article.id).slice(0, 2)
 
 	return (
 		<div className='bg-white text-[#1f1f1f] antialiased'>
@@ -84,14 +89,24 @@ export default function ArticlePage({ params }: ArticlePageProps) {
 							</div>
 
 							<div className='relative h-[240px] overflow-hidden rounded-2xl border border-black/10 bg-[linear-gradient(135deg,rgba(31,61,58,0.16),rgba(31,61,58,0.04))] lg:h-[260px]'>
-								<div className='pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(31,61,58,0.22),rgba(31,61,58,0))]' />
-								<div className='absolute inset-0 grid place-items-center text-black/45'>
-									<div className='grid place-items-center gap-2 text-xs uppercase tracking-[0.2em]'>
-										<ImageIcon className='h-7 w-7' />
-										<span>Изображение</span>
-									</div>
-								</div>
-								<div className='absolute top-4 left-4 inline-flex items-center rounded-full border border-black/10 bg-white/80 px-3 py-1 text-[11px] uppercase tracking-[0.12em] text-black/60'>
+								{article.imageUrl ? (
+									<img
+										src={article.imageUrl}
+										alt={article.title}
+										className='h-full w-full object-cover'
+									/>
+								) : (
+									<>
+										<div className='pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(31,61,58,0.22),rgba(31,61,58,0))]' />
+										<div className='absolute inset-0 grid place-items-center text-black/45'>
+											<div className='grid place-items-center gap-2 text-xs uppercase tracking-[0.2em]'>
+												<ImageIcon className='h-7 w-7' />
+												<span>Изображение</span>
+											</div>
+										</div>
+									</>
+								)}
+								<div className='absolute left-4 top-4 inline-flex items-center rounded-full border border-black/10 bg-white/80 px-3 py-1 text-[11px] uppercase tracking-[0.12em] text-black/60'>
 									{article.tag}
 								</div>
 							</div>
@@ -100,7 +115,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
 						<div className='mt-10 grid gap-8 lg:grid-cols-[1.2fr_0.8fr]'>
 							<article className='rounded-2xl border border-black/10 bg-white p-6 sm:p-8'>
 								<div
-									className='text-[15px] text-black/70 leading-relaxed space-y-4 [&_h2]:text-[20px] [&_h2]:font-semibold [&_h2]:text-black [&_h2]:mt-6 [&_h2]:mb-2 [&_h3]:text-[18px] [&_h3]:font-semibold [&_h3]:text-black [&_p]:leading-relaxed [&_ul]:pl-5 [&_ul]:list-disc [&_ol]:pl-5 [&_ol]:list-decimal [&_li]:mb-2 [&_blockquote]:border-l-2 [&_blockquote]:border-black/10 [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-black/60'
+									className='space-y-4 text-[15px] leading-relaxed text-black/70 [&_blockquote]:border-l-2 [&_blockquote]:border-black/10 [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-black/60 [&_h2]:mb-2 [&_h2]:mt-6 [&_h2]:text-[20px] [&_h2]:font-semibold [&_h2]:text-black [&_h3]:text-[18px] [&_h3]:font-semibold [&_h3]:text-black [&_li]:mb-2 [&_ol]:list-decimal [&_ol]:pl-5 [&_p]:leading-relaxed [&_ul]:list-disc [&_ul]:pl-5'
 									dangerouslySetInnerHTML={{ __html: article.contentHtml }}
 								/>
 							</article>
@@ -136,6 +151,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
 											key={item.id}
 											article={item}
 											showCta
+											href={`/articles/${item.slug}`}
 										/>
 									))}
 								</div>

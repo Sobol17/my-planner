@@ -95,6 +95,22 @@ model Product {
   @@map("product")
 }
 
+model Article {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  title       String
+  excerpt     String
+  tag         String
+  date        String
+  readTime    String
+  contentHtml String
+  imageUrl    String?
+
+  @@map("article")
+}
+
 model ContractProduct {
   id           String  @id @default(cuid())
   contractId   String

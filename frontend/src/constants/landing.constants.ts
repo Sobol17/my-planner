@@ -10,11 +10,12 @@ import type {
 } from '@/types/landing.types'
 
 export const NAV_ITEMS: NavItem[] = [
-	{ href: '#services', label: 'Услуги' },
-	{ href: '#packages', label: 'Цены' },
-	{ href: '#reviews', label: 'Отзывы' },
-	{ href: '#trust', label: 'Доверие' },
-	{ href: '#articles', label: 'Статьи' }
+	{ href: '/uslugi', label: 'Услуги' },
+	{ href: '/pohorony-pod-klyuch', label: 'Под ключ' },
+	{ href: '/ceny', label: 'Цены' },
+	{ href: '/ritualnye-tovary', label: 'Товары' },
+	{ href: '/articles', label: 'Статьи' },
+	{ href: '/kontakty', label: 'Контакты' }
 ]
 
 export const HERO_BADGES: HeroBadge[] = [

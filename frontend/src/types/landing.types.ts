@@ -52,11 +52,13 @@ export type HeroBadge = string
 
 export type ArticlePreview = {
 	id: string
+	slug?: string
 	title: string
 	excerpt: string
 	tag: string
 	date: string
 	readTime: string
+	imageUrl?: string
 }
 
 export type Article = ArticlePreview & {

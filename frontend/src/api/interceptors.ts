@@ -19,6 +19,15 @@ const axiosClassic = axios.create(options)
 const axiosWithAuth = axios.create(options)
 
 axiosWithAuth.interceptors.request.use(config => {
+	if (
+		typeof FormData !== 'undefined' &&
+		config.data instanceof FormData &&
+		config.headers
+	) {
+		delete (config.headers as Record<string, string>)['Content-Type']
+		delete (config.headers as Record<string, string>)['content-type']
+	}
+
 	const accessToken = getAccessToken()
 
 	if (config?.headers && accessToken)

@@ -16,7 +16,7 @@ export function ArticleCard({
 	showCta = false,
 	href
 }: ArticleCardProps) {
-	const target = href ?? `/articles/${article.id}`
+	const target = href ?? `/articles/${article.slug || article.id}`
 
 	return (
 		<Link
@@ -25,13 +25,24 @@ export function ArticleCard({
 			aria-label={`Открыть статью: ${article.title}`}
 		>
 			<div className='relative mb-4 h-[220px] overflow-hidden rounded-2xl border border-black/10 bg-[linear-gradient(135deg,rgba(31,61,58,0.16),rgba(31,61,58,0.04))]'>
-				<div className='pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(31,61,58,0.22),rgba(31,61,58,0))]' />
-				<div className='absolute inset-0 grid place-items-center text-black/45'>
-					<div className='grid place-items-center gap-2 text-xs uppercase tracking-[0.2em]'>
-						<ImageIcon className='h-6 w-6' />
-						<span>Изображение</span>
-					</div>
-				</div>
+				{article.imageUrl ? (
+					<img
+						src={article.imageUrl}
+						alt={article.title}
+						className='h-full w-full object-cover'
+						loading='lazy'
+					/>
+				) : (
+					<>
+						<div className='pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(31,61,58,0.22),rgba(31,61,58,0))]' />
+						<div className='absolute inset-0 grid place-items-center text-black/45'>
+							<div className='grid place-items-center gap-2 text-xs uppercase tracking-[0.2em]'>
+								<ImageIcon className='h-6 w-6' />
+								<span>Изображение</span>
+							</div>
+						</div>
+					</>
+				)}
 				<div className='absolute left-4 top-4 inline-flex items-center rounded-full border border-black/10 bg-white/80 px-3 py-1 text-[11px] uppercase tracking-[0.12em] text-black/60'>
 					{article.tag}
 				</div>

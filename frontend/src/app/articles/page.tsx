@@ -6,7 +6,9 @@ import { Footer } from '@/components/landing/Footer'
 import { Header } from '@/components/landing/Header'
 import { SectionHeading } from '@/components/landing/SectionHeading'
 
-import { ARTICLES } from '@/constants/landing.constants'
+import { getPublicArticles } from '@/services/public-articles.service'
+
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
 	title: 'Статьи',
@@ -14,7 +16,9 @@ export const metadata: Metadata = {
 		'Полезные материалы о ритуальных услугах, документах и организации прощания.'
 }
 
-export default function ArticlesPage() {
+export default async function ArticlesPage() {
+	const articles = await getPublicArticles()
+
 	return (
 		<div className='bg-white text-[#1f1f1f] antialiased'>
 			<Header />
@@ -37,14 +41,21 @@ export default function ArticlesPage() {
 						/>
 
 						<div className='grid gap-5 md:grid-cols-2 lg:grid-cols-3'>
-							{ARTICLES.map(article => (
+							{articles.map(article => (
 								<ArticleCard
 									key={article.id}
 									article={article}
 									showCta
+									href={`/articles/${article.slug}`}
 								/>
 							))}
 						</div>
+
+						{!articles.length ? (
+							<p className='mt-5 rounded-xl border border-black/10 bg-white px-4 py-3 text-sm text-black/60'>
+								Список статей пока пуст.
+							</p>
+						) : null}
 					</div>
 				</section>
 			</main>

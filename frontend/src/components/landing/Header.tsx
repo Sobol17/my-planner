@@ -14,12 +14,6 @@ export function Header() {
 	const pathname = usePathname()
 	const isHome = pathname === '/'
 	const navItems = NAV_ITEMS.map(item => {
-		if (item.href === '#articles') {
-			return {
-				...item,
-				href: isHome ? item.href : '/articles'
-			}
-		}
 		if (item.href.startsWith('#')) {
 			return {
 				...item,
@@ -67,13 +61,13 @@ export function Header() {
 						aria-label='Навигация'
 					>
 						{navItems.map(item => (
-							<a
+							<Link
 								key={item.label}
 								className='rounded-xl px-3 py-2 text-sm text-black/60 transition hover:bg-primarySoft hover:text-black'
 								href={item.href}
 							>
 								{item.label}
-							</a>
+							</Link>
 						))}
 					</nav>
 

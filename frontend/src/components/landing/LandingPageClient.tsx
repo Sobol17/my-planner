@@ -14,8 +14,13 @@ import { Trust } from '@/components/landing/Trust'
 import { PACKAGES } from '@/constants/landing.constants'
 
 import { useLandingPackages } from '@/hooks/landing/useLandingPackages'
+import { PublicArticle } from '@/types/articles.types'
 
-export function LandingPageClient() {
+interface LandingPageClientProps {
+	articles: PublicArticle[]
+}
+
+export function LandingPageClient({ articles }: LandingPageClientProps) {
 	const {
 		modalOpen,
 		modalPkg,
@@ -40,7 +45,7 @@ export function LandingPageClient() {
 			/>
 			<Reviews />
 			<Trust />
-			<ArticleSection />
+			<ArticleSection articles={articles} />
 			<Footer />
 
 			<CoffinsModal

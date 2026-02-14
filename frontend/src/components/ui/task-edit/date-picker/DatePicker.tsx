@@ -1,4 +1,5 @@
 import dayjs from 'dayjs'
+import 'dayjs/locale/ru'
 import LocalizedFormat from 'dayjs/plugin/localizedFormat'
 import { X } from 'lucide-react'
 import { useState } from 'react'
@@ -12,6 +13,7 @@ import { formatCaption } from './DatePickerCaption'
 import { cn } from '@/lib/utils'
 
 dayjs.extend(LocalizedFormat)
+dayjs.locale('ru')
 
 interface IDatePicker {
 	onChange: (value: string) => void
@@ -26,6 +28,16 @@ export function DatePicker({
 }: IDatePicker) {
 	const [selected, setSelected] = useState<Date>()
 	const { isShow, setIsShow, ref } = useOutside(false)
+	const parsedDate = dayjs(value)
+	const selectedFromValue = parsedDate.isValid()
+		? parsedDate.toDate()
+		: undefined
+	const selectedDate = selected ?? selectedFromValue
+	const formattedValue = value
+		? dayjs(value).isValid()
+			? dayjs(value).format('LL')
+			: value
+		: 'Выберите дату'
 
 	const handleDaySelect: SelectSingleEventHandler = date => {
 		const ISOdate = date?.toISOString()
@@ -41,14 +53,21 @@ export function DatePicker({
 
 	return (
 		<div
-			className='relative'
+			className='relative w-full'
 			ref={ref}
 		>
-			<button onClick={() => setIsShow(!isShow)}>
-				{value ? dayjs(value).format('LL') : 'Click for select'}
+			<button
+				type='button'
+				className='mt-2 flex w-full items-center justify-start rounded-lg border border-border bg-white/0 p-3 text-left text-base text-primary outline-none transition-colors focus:border-primary'
+				onClick={() => setIsShow(!isShow)}
+			>
+				<span className={value ? 'text-primary' : 'text-primary/30'}>
+					{formattedValue}
+				</span>
 			</button>
 			{value && (
 				<button
+					type='button'
 					className='absolute -top-2 -right-4 opacity-30 hover:opacity-100 transition-opacity'
 					onClick={() => onChange('')}
 				>
@@ -58,7 +77,7 @@ export function DatePicker({
 			{isShow && (
 				<div
 					className={cn(
-						'absolute p-2.5 slide bg-sidebar z-10 shadow rounded-lg',
+						'absolute p-2.5 slide bg-white z-10 shadow-lg rounded-lg',
 						position === 'left' ? '-left-4' : ' -right-4'
 					)}
 					style={{
@@ -70,8 +89,8 @@ export function DatePicker({
 						toYear={2054}
 						initialFocus={isShow}
 						mode='single'
-						defaultMonth={selected}
-						selected={selected}
+						defaultMonth={selectedDate}
+						selected={selectedDate}
 						onSelect={handleDaySelect}
 						weekStartsOn={1}
 						formatters={{ formatCaption }}

@@ -27,7 +27,7 @@ const emptyProduct = { product_id: '', quantity: 1, unit_price: 0 }
 const FUNERAL_BENEFIT_AMOUNT = 11000
 const EMPTY_ERRORS: Record<string, never> = {}
 
-type ContractCreateFormValues = ContractCreateDto & {
+export type ContractCreateFormValues = ContractCreateDto & {
 	funeral_benefit_deduction?: boolean
 }
 
@@ -292,3 +292,5 @@ export function useContractDetails({ id }: UseContractDetailsOptions) {
 		downloadDocument
 	}
 }
+
+export type UseContractDetailsReturn = ReturnType<typeof useContractDetails>

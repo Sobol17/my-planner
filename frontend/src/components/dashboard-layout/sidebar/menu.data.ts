@@ -1,5 +1,6 @@
 import {
 	BookUser,
+	FileText,
 	LayoutDashboard,
 	ScanBarcode,
 	Settings,
@@ -30,6 +31,11 @@ export const MENU: IMenuItem[] = [
 		icon: ScanBarcode,
 		link: DASHBOARD_PAGES.PRODUCTS,
 		name: 'Атрибутика'
+	},
+	{
+		icon: FileText,
+		link: DASHBOARD_PAGES.ARTICLES,
+		name: 'Статьи'
 	},
 	{
 		icon: Settings,

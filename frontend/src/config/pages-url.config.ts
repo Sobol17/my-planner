@@ -5,6 +5,7 @@ class DASHBOARD {
 	CONTRACTS = `${this.root}/contracts`
 	SERVICES = `${this.root}/services`
 	PRODUCTS = `${this.root}/products`
+	ARTICLES = `${this.root}/articles`
 	SETTINGS = `${this.root}/settings`
 }
 

@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import 'react-quill/dist/quill.snow.css';
+
 :root {
 	--foreground-rgb: 0, 0, 0;
 	--background-start-rgb: 214, 219, 220;
@@ -109,6 +111,35 @@ input:checked.defaultCheckbox::before {
 
 .swiper-pagination-bullet-active {
 	background-color: rgb(110, 122, 119) !important;
+}
+
+.quill-editor {
+	.ql-toolbar {
+		border: 1px solid hsl(var(--border));
+		border-radius: 0.5rem 0.5rem 0 0;
+		background: rgba(255, 255, 255, 0.6);
+	}
+
+	.ql-container {
+		border: 1px solid hsl(var(--border));
+		border-top: 0;
+		border-radius: 0 0 0.5rem 0.5rem;
+		background: rgba(255, 255, 255, 0.6);
+		font-family: inherit;
+	}
+
+	.ql-editor {
+		min-height: 240px;
+		font-size: 15px;
+		line-height: 1.6;
+	}
+}
+
+.dark .quill-editor {
+	.ql-toolbar,
+	.ql-container {
+		background: rgba(255, 255, 255, 0.04);
+	}
 }
 
 @media (min-width: 1024px) {

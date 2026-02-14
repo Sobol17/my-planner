@@ -13,14 +13,14 @@ export function Hero() {
 			<div className='mx-auto grid max-w-6xl items-center gap-14 px-6 lg:grid-cols-[1.15fr_1fr]'>
 				<div>
 					<h1 className='mb-4 text-[38px] font-semibold leading-[1.12] tracking-[-0.02em] sm:text-[48px]'>
-						Ритуальные услуги
+						Ритуальные услуги в Иркутске
 						<br />
 						без лишних сложностей
 					</h1>
 					<p className='mb-7 max-w-[52ch] text-[18px] text-black/60 text-second'>
-						Организуем всё спокойно, прозрачно и точно в срок. На связи
-						круглосуточно — вы получите понятный план действий и поддержку на
-						каждом шаге.
+						Организуем всё спокойно, прозрачно и точно в срок в Иркутске и
+						Иркутской области. На связи круглосуточно — вы получите понятный
+						план действий и поддержку на каждом шаге.
 					</p>
 
 					<div className='mb-7 mt-4 flex flex-wrap gap-2.5'>

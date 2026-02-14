@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { Noto_Sans } from 'next/font/google'
 import { Toaster } from 'sonner'
 
-import { SITE_NAME } from '@/constants/seo.constants'
+import { SITE_NAME, SITE_URL } from '@/config/site.config'
 
 import './globals.scss'
 import { Providers } from './providers'
@@ -17,11 +17,12 @@ const zen = Noto_Sans({
 })
 
 export const metadata: Metadata = {
+	metadataBase: new URL(SITE_URL),
 	title: {
 		default: SITE_NAME,
 		template: `%s | ${SITE_NAME}`
 	},
-	description: 'CRM система для ритуальной службы Архангел'
+	description: 'Ритуальная служба в Иркутске. Консультации и сопровождение 24/7.'
 }
 
 export default function RootLayout({
@@ -31,7 +32,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html
-			lang='en'
+			lang='ru'
 			suppressHydrationWarning
 		>
 			<body className={cn(zen.className)}>
