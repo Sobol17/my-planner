@@ -6,8 +6,8 @@ import { CheckItem } from '@/components/landing/CheckItem'
 
 import type { PackageData } from '@/types/landing.types'
 
-import { getPackagePathById } from '@/utils/package-slug'
 import { computePackagePrice, rub } from '@/utils/landing'
+import { getPackagePathById } from '@/utils/package-slug'
 
 type PackageCardProps = {
 	pkg: PackageData
@@ -139,25 +139,18 @@ export function PackageCard({
 			</details>
 
 			<div className='mt-1 grid gap-2 sm:grid-cols-2'>
-				<Link
-					href={getPackagePathById(pkg.id)}
-					className='sm:col-span-2 inline-flex w-full items-center justify-center rounded-xl border border-black/15 bg-[#fafafa] px-4 py-3 font-medium text-black/80 transition hover:border-black/25 hover:bg-white'
-				>
-					Подробнее о пакете
-				</Link>
 				<a
 					href='tel:+79500550266'
 					className='inline-flex w-full items-center justify-center rounded-xl bg-accent-land px-4 py-3 font-medium text-white transition active:translate-y-[1px] hover:bg-primaryDark'
 				>
 					Позвонить
 				</a>
-				<button
-					type='button'
-					onClick={onOpenCoffins}
-					className='inline-flex w-full items-center justify-center rounded-xl border border-[rgba(31,61,58,0.35)] bg-white/85 px-4 py-3 font-medium text-primary transition active:translate-y-[1px] hover:border-[rgba(31,61,58,0.55)] hover:bg-primarySoft'
+				<Link
+					href={getPackagePathById(pkg.id)}
+					className='inline-flex w-full items-center justify-center rounded-xl border border-black/15 bg-[#fafafa] px-4 py-3 font-medium text-black/80 transition hover:border-black/25 hover:bg-white'
 				>
-					Выбрать гроб
-				</button>
+					Подробнее
+				</Link>
 			</div>
 		</article>
 	)

@@ -9,6 +9,7 @@ import {
 import Link from 'next/link'
 
 import { SERVICES } from '@/constants/landing.constants'
+
 import type { ServiceItem } from '@/types/landing.types'
 
 import { SectionHeading } from './SectionHeading'
@@ -86,7 +87,7 @@ export function Services() {
 							key={it.title}
 							href={it.href}
 							aria-label={`Перейти на страницу услуги: ${it.title}`}
-							className='rounded-2xl border border-black/10 bg-white/85 p-6 transition hover:-translate-y-0.5 hover:border-black/15 hover:bg-white'
+							className='rounded-2xl border border-black/10 bg-light p-6 transition hover:-translate-y-0.5 hover:border-black/15 hover:bg-white'
 						>
 							<div className='mb-2 flex items-center gap-3'>
 								<div
@@ -95,11 +96,11 @@ export function Services() {
 								>
 									<Icon kind={it.icon} />
 								</div>
-								<h3 className='text-[18px] font-semibold leading-[1.25]'>
+								<h3 className='text-title text-[18px] font-semibold leading-[1.25]'>
 									{it.title}
 								</h3>
 							</div>
-							<p className='text-sm text-black/60'>{it.desc}</p>
+							<p className='text-sm text-secondary-land'>{it.desc}</p>
 						</Link>
 					))}
 				</div>

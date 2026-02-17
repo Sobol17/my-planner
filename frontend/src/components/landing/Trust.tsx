@@ -20,7 +20,7 @@ export function Trust() {
 					{TRUST_ITEMS.map(text => (
 						<div
 							key={text}
-							className='rounded-2xl border border-black/10 bg-white/90 p-5 text-[16px]'
+							className='rounded-2xl border border-black/10 bg-light p-5 text-[16px]'
 						>
 							{text}
 						</div>

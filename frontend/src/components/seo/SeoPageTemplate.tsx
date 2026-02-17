@@ -4,10 +4,11 @@ import { Footer } from '@/components/landing/Footer'
 import { Header } from '@/components/landing/Header'
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs'
 import { JsonLd } from '@/components/seo/JsonLd'
+
 import { BUSINESS_INFO } from '@/config/site.config'
 
-import { createBreadcrumbSchema } from '@/lib/seo'
 import type { BreadcrumbItem } from '@/lib/seo'
+import { createBreadcrumbSchema } from '@/lib/seo'
 
 type PageSection = {
 	title: string
@@ -76,7 +77,9 @@ export function SeoPageTemplate({
 							<h1 className='text-[30px] font-semibold leading-[1.2] tracking-[-0.01em] sm:text-[36px]'>
 								{h1}
 							</h1>
-							<p className='mt-4 text-[16px] leading-relaxed text-black/65'>{lead}</p>
+							<p className='mt-4 text-[16px] leading-relaxed text-black/65'>
+								{lead}
+							</p>
 							<div className='mt-5 flex flex-wrap gap-2 text-xs'>
 								<span className='rounded-full border border-black/10 bg-[#fafafa] px-3 py-1.5 text-black/70'>
 									Иркутск и Иркутская область
@@ -92,7 +95,9 @@ export function SeoPageTemplate({
 							<div className='mt-8 space-y-7'>
 								{sections.map(section => (
 									<section key={section.title}>
-										<h2 className='text-[22px] font-semibold'>{section.title}</h2>
+										<h2 className='text-[22px] font-semibold'>
+											{section.title}
+										</h2>
 										<div className='mt-3 space-y-3 text-[15px] leading-relaxed text-black/70'>
 											{section.paragraphs.map(paragraph => (
 												<p key={paragraph}>{paragraph}</p>
@@ -109,7 +114,9 @@ export function SeoPageTemplate({
 								))}
 							</div>
 							<section className='mt-10 rounded-2xl border border-[#d6e6de] bg-[#f7faf8] p-5 sm:p-6'>
-								<h2 className='text-[22px] font-semibold'>Как мы можем помочь дальше</h2>
+								<h2 className='text-[22px] font-semibold'>
+									Как мы можем помочь дальше
+								</h2>
 								<p className='mt-3 text-[15px] leading-relaxed text-black/70'>
 									Если хотите, можно за один звонок сверить порядок действий и
 									получить спокойный план под вашу ситуацию.
@@ -142,10 +149,14 @@ export function SeoPageTemplate({
 										{faq.map(item => (
 											<article
 												key={item.question}
-												className='rounded-xl border border-black/10 bg-[#fafafa] p-4'
+												className='rounded-xl border border-black/10 bg-light p-4'
 											>
-												<h3 className='text-[17px] font-medium'>{item.question}</h3>
-												<p className='mt-2 text-[15px] text-black/70'>{item.answer}</p>
+												<h3 className='text-[17px] font-medium'>
+													{item.question}
+												</h3>
+												<p className='mt-2 text-[15px] text-black/70'>
+													{item.answer}
+												</p>
 											</article>
 										))}
 									</div>
@@ -160,11 +171,13 @@ export function SeoPageTemplate({
 											<Link
 												key={link.href}
 												href={link.href}
-												className='rounded-xl border border-black/10 bg-[#fafafa] p-4 transition hover:border-black/20 hover:bg-white'
+												className='rounded-xl border border-black/10 bg-light p-4 transition hover:border-black/20 hover:bg-white'
 											>
-												<p className='font-medium text-black'>{link.label}</p>
+												<p className='font-medium text-title'>{link.label}</p>
 												{link.description ? (
-													<p className='mt-1 text-sm text-black/60'>{link.description}</p>
+													<p className='mt-1 text-sm text-secondary-land'>
+														{link.description}
+													</p>
 												) : null}
 											</Link>
 										))}

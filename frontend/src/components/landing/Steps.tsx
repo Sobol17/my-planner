@@ -7,7 +7,7 @@ import { SectionHeading } from './SectionHeading'
 export function Steps() {
 	return (
 		<section
-			className='py-[88px]'
+			className='bg-light py-[88px]'
 			id='steps'
 		>
 			<div className='mx-auto max-w-6xl px-6'>
@@ -29,7 +29,9 @@ export function Steps() {
 									{step.n}
 								</div>
 								<div className='font-semibold'>{step.title}</div>
-								<div className='mt-1 text-sm text-black/60'>{step.desc}</div>
+								<div className='mt-1 text-sm text-secondary-land'>
+									{step.desc}
+								</div>
 							</div>
 						))}
 					</div>

@@ -19,7 +19,7 @@ export function Reviews() {
 
 	return (
 		<section
-			className='py-[88px]'
+			className='bg-light py-[88px]'
 			id='reviews'
 		>
 			<div className='mx-auto max-w-6xl px-6'>

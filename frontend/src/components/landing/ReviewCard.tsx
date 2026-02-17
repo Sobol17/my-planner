@@ -1,6 +1,7 @@
 'use client'
 
 import type { Review } from '@/types/landing.types'
+
 import { useReviewCard } from '@/hooks/landing/useReviewCard'
 
 type ReviewCardProps = {
@@ -13,7 +14,7 @@ export function ReviewCard({ review, expanded, onToggle }: ReviewCardProps) {
 	const { canExpand, textRef } = useReviewCard(review.text, expanded)
 
 	return (
-		<div className='grid h-full gap-3 rounded-[18px] border border-black/10 bg-white/85 p-6 min-h-[225px]'>
+		<div className='grid h-full gap-3 rounded-[18px] border border-black/10 bg-white p-6 min-h-[225px]'>
 			<div
 				className='flex gap-1 opacity-90'
 				aria-label='Оценка 5 из 5'
@@ -35,7 +36,7 @@ export function ReviewCard({ review, expanded, onToggle }: ReviewCardProps) {
 				<p
 					ref={textRef}
 					className={[
-						'text-sm text-black/60',
+						'text-sm text-title',
 						expanded
 							? ''
 							: '[display:-webkit-box] [-webkit-line-clamp:3] [-webkit-box-orient:vertical] overflow-hidden'
@@ -55,7 +56,9 @@ export function ReviewCard({ review, expanded, onToggle }: ReviewCardProps) {
 				) : null}
 			</div>
 			<div className='mt-1 flex items-baseline justify-between gap-3'>
-				<strong className='font-semibold'>{review.name}</strong>
+				<strong className='font-semibold text-secondary-land'>
+					{review.name}
+				</strong>
 				<span className='text-xs text-black/60'>{review.city}</span>
 			</div>
 		</div>

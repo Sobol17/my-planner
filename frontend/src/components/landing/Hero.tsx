@@ -7,7 +7,7 @@ import { HERO_BADGES } from '@/constants/landing.constants'
 export function Hero() {
 	return (
 		<section
-			className='py-[84px] pb-[72px]'
+			className='bg-light py-[84px] pb-[72px]'
 			id='top'
 		>
 			<div className='mx-auto grid max-w-6xl items-center gap-14 px-6 lg:grid-cols-[1.15fr_1fr]'>

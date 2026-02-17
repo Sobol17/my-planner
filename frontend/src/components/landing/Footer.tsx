@@ -1,14 +1,17 @@
 'use client'
 
-export function Footer() {
-	const mapMarkup = `
-<div class="dg-widget-frame">
-  <script charset="utf-8" src="https://widgets.2gis.com/js/DGWidgetLoader.js"></script>
-  <script charset="utf-8">new DGWidgetLoader({ "width": 660, "height": 500, "borderColor": "#a3a3a3", "pos": { "lat": 52.265018862801384, "lon": 104.31524991989137, "zoom": 16 }, "opt": { "city": "irkutsk" }, "org": [{ "id": "70000001044403974" }] });</script>
-  <noscript style="color:#c00;font-size:16px;font-weight:bold;">Виджет карты использует JavaScript. Включите его в настройках вашего браузера.</noscript>
-</div>
-`
+const DG_WIDGET_NOSCRIPT_TEXT =
+	'Виджет карты использует JavaScript. Включите его в настройках вашего браузера.'
 
+const DG_WIDGET_SRC = `https://widgets.2gis.com/widget?type=firmsonmap&options=${encodeURIComponent(
+	JSON.stringify({
+		pos: { lat: 52.265018862801384, lon: 104.31524991989137, zoom: 16 },
+		opt: { city: 'irkutsk' },
+		org: '70000001044403974'
+	})
+)}`
+
+export function Footer() {
 	return (
 		<footer
 			className='bg-primary py-[72px] text-white'
@@ -94,11 +97,20 @@ export function Footer() {
 						</div>
 					</div>
 					<div className='relative overflow-hidden rounded-[18px] border border-white/20 bg-white/10 p-4'>
-						<div
-							className='map text-[12px] text-white/85'
-							suppressHydrationWarning
-							dangerouslySetInnerHTML={{ __html: mapMarkup }}
-						/>
+						<div className='map text-[12px] text-white/85'>
+							<div className='dg-widget-frame'>
+								<iframe
+									title='Карта 2GIS'
+									src={DG_WIDGET_SRC}
+									loading='lazy'
+									referrerPolicy='no-referrer-when-downgrade'
+									allowFullScreen
+								/>
+							</div>
+							<noscript style={{ color: '#c00', fontSize: 16, fontWeight: 'bold' }}>
+								{DG_WIDGET_NOSCRIPT_TEXT}
+							</noscript>
+						</div>
 					</div>
 				</div>
 				<div className='mt-6 border-t border-white/15 pt-4 text-xs opacity-80'>

@@ -11,13 +11,18 @@ const config: Config = {
 	theme: {
 		extend: {
 			colors: {
+				title: '#1f1f1f',
+				'primary-land': '#3a3a3a',
+				'secondary-land': '#6A6A6A',
+				light: '#F4F4F4',
+				'accent-land': '#2B2B2B',
+				btn: '#3C3C3C',
+				'btn-hovered': '#262626',
 				'bg-main': '#f2f3f4',
 				'bg-card': '#fff',
 				'text-main': '#2b2b2b',
 				'text-second': '#6a6a6a',
-				'accent-land': '#6e7a77',
 				'muted-land': 'rgba(31,31,31,0.6)',
-				'primary-land': '#1f3d3a',
 				primary: '#171717',
 				primaryDark: '#18312f',
 				primarySoft: 'rgba(31,61,58,0.08)',

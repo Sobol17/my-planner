@@ -15,7 +15,7 @@ html {
 }
 
 body {
-	@apply text-base text-foreground bg-background;
+	@apply text-base text-foreground !bg-light;
 	font-family: var(--font-zen), sans-serif;
 
 	@media (max-width: 1200px) {
@@ -219,6 +219,6 @@ input:checked.defaultCheckbox::before {
 		@apply border-border;
 	}
 	body {
-		@apply bg-background text-foreground;
+		@apply bg-light text-foreground;
 	}
 }
